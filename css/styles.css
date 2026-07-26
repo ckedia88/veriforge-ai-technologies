@@ -325,6 +325,7 @@ select option { background: var(--bg); }
   box-shadow: var(--shadow);
   animation: chatIn .22s ease;
 }
+.chat-panel[hidden] { display: none; }
 @keyframes chatIn { from { opacity: 0; transform: translateY(12px) scale(.98); } to { opacity: 1; transform: none; } }
 
 .chat-header {
