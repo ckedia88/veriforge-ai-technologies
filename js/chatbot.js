@@ -9,7 +9,7 @@
 // Get a free access key at https://web3forms.com (enter chiragkedia@gmail.com).
 // Paste it below to have questions delivered silently to your inbox.
 // Until then, the bot falls back to opening the visitor's email client (mailto).
-const WEB3FORMS_ACCESS_KEY = "";        // e.g. "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+const WEB3FORMS_ACCESS_KEY = "cc8c5f63-a3c7-41bd-b98f-e78224653a2d";        // e.g. "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 const TEAM_EMAIL = "chiragkedia@gmail.com";
 // ---------------------------------------------------------------------------
 
