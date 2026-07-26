@@ -226,6 +226,27 @@ a:hover { color: #fff; }
 .course-card .btn { margin-top: auto; }
 .pay-note { text-align: center; color: var(--muted); margin-top: 2rem; font-size: .92rem; }
 
+/* ===== About / Team ===== */
+.team { max-width: 860px; margin-inline: auto; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.team-card { text-align: center; display: flex; flex-direction: column; align-items: center; }
+.avatar {
+  width: 76px; height: 76px; border-radius: 50%;
+  display: grid; place-items: center; margin-bottom: 1rem;
+  font-family: "Sora"; font-weight: 800; font-size: 1.5rem; color: #06121f;
+  background: var(--accent-grad);
+  box-shadow: 0 8px 24px rgba(56, 225, 201, .3);
+}
+.team-card .role { color: var(--accent); font-weight: 600; font-size: .9rem; margin-bottom: .8rem; }
+.team-card p { color: var(--muted); font-size: .95rem; }
+.linkedin {
+  display: inline-flex; align-items: center; gap: .5rem; margin-top: 1.2rem;
+  padding: .55rem 1.1rem; border-radius: 999px; font-weight: 600; font-size: .9rem;
+  color: var(--text); border: 1px solid var(--border); background: var(--surface);
+  transition: border-color .2s, color .2s, background .2s;
+}
+.linkedin:hover { border-color: var(--accent); color: #fff; background: var(--surface-2); }
+.linkedin svg { color: #0a66c2; }
+
 /* ===== Form ===== */
 .enroll-form {
   background: linear-gradient(180deg, var(--surface), var(--bg-2));
