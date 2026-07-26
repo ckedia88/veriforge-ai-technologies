@@ -1,0 +1,10 @@
+{
+  "name": "veriforge-ai-site",
+  "version": "1.0.0",
+  "description": "VeriForge AI Technologies — AI-driven IP/SS/SoC verification services and premium DV/VLSI training with online enrollment.",
+  "private": true,
+  "scripts": {
+    "dev": "netlify dev",
+    "start": "netlify dev"
+  }
+}

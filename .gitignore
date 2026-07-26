@@ -1,0 +1,11 @@
+node_modules/
+.netlify/
+.env
+.env.*
+.DS_Store
+npm-debug.log*
+
+# Secrets — never commit API keys
+rzp-key.csv
+*.key
+secrets/
