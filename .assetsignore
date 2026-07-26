@@ -1,0 +1,21 @@
+# Files/folders excluded from Cloudflare Workers static assets upload.
+# This prevents the deploy-time node_modules (122 MiB workerd binary) from
+# being uploaded and hitting the 25 MiB asset limit.
+node_modules
+.git
+.github
+functions
+netlify
+worker.js
+wrangler.toml
+wrangler.jsonc
+netlify.toml
+package.json
+package-lock.json
+bun.lockb
+.gitignore
+.env
+.env.*
+rzp-key.csv
+README.md
+assets/README.md
