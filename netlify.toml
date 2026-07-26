@@ -5,6 +5,13 @@
 [functions]
   node_bundler = "esbuild"
 
+# Map the neutral /api/* path to Netlify Functions so the same client code
+# works on both Netlify and Cloudflare Pages.
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
 # SPA-style: serve index for the root; static assets served directly.
 [[headers]]
   for = "/*"

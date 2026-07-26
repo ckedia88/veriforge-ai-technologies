@@ -15,8 +15,8 @@
 //  DEMO MODE and simply shows a confirmation without charging.
 // ============================================================
 
-const CREATE_ORDER_URL = "/.netlify/functions/create-order";
-const VERIFY_URL = "/.netlify/functions/verify-payment";
+const CREATE_ORDER_URL = "/api/create-order";
+const VERIFY_URL = "/api/verify-payment";
 
 const form = document.getElementById("enrollForm");
 const statusEl = document.getElementById("formStatus");

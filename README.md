@@ -10,16 +10,25 @@ Built with plain **HTML / CSS / JavaScript** and **Netlify Functions** for secur
 
 ```
 DV Site/
-├── index.html                     Landing page (Services, AI Verification, Training, Enroll)
+├── index.html                     Landing page (Services, AI Verification, About, Training, Enroll)
+├── terms.html / refund.html / privacy.html   Legal pages
 ├── css/styles.css                 Styling / theme
 ├── js/main.js                     Navigation + UI interactions
-├── js/payment.js                  Razorpay checkout (client)
-├── netlify/functions/
-│   ├── create-order.js            Creates a Razorpay order (server, direct REST call, no deps)
-│   └── verify-payment.js          Verifies the payment signature (server, built-in crypto)
-├── netlify.toml                   Netlify build/functions config
+├── js/payment.js                  Razorpay checkout (client) — calls /api/*
+├── netlify/functions/             Netlify Functions (Node runtime)
+│   ├── create-order.js
+│   └── verify-payment.js
+├── functions/api/                 Cloudflare Pages Functions (Workers runtime)
+│   ├── create-order.js
+│   └── verify-payment.js
+├── netlify.toml                   Netlify config (maps /api/* -> functions)
+├── _headers                       Security headers (Cloudflare)
 └── package.json                   Project metadata (no dependencies to install)
 ```
+
+> The client calls neutral `/api/create-order` and `/api/verify-payment` paths.
+> On **Netlify** these are redirected to `netlify/functions/*`; on **Cloudflare Pages**
+> they resolve to `functions/api/*`. The same site works on either host.
 
 ## Courses
 
@@ -67,6 +76,22 @@ netlify deploy        # draft
 netlify deploy --prod # production
 ```
 
+## Deploy to Cloudflare Pages (alternative host)
+
+1. Push to GitHub (already done).
+2. Cloudflare dashboard → **Workers & Pages → Create → Pages → Connect to Git** → pick the repo.
+3. Build settings:
+   - Framework preset: **None**
+   - Build command: *(leave blank)*
+   - Build output directory: `/`  (the repo root — `index.html` is here)
+4. **Settings → Environment variables → Production**, add:
+   - `RAZORPAY_KEY_ID`
+   - `RAZORPAY_KEY_SECRET`
+5. Deploy. Cloudflare auto-detects the `functions/api/*` Pages Functions; the client's
+   `/api/create-order` and `/api/verify-payment` calls resolve to them automatically.
+
+> Locally you can test Cloudflare functions with: `npx wrangler pages dev .`
+
 ## Custom domain
 
 1. Buy a domain (e.g. from Namecheap, GoDaddy, Google Domains, or **directly in Netlify**:
@@ -77,9 +102,9 @@ netlify deploy --prod # production
 
 ## ⚠️ TODO before launch (reminders)
 
-- [ ] **Contact details** — replace placeholders in `index.html` footer
-      (`hello@veriforge.ai`, phone, city).
-- [ ] **Razorpay keys** — add `RAZORPAY_KEY_ID` / `RAZORPAY_KEY_SECRET` env vars.
+- [x] **Contact details** — added in `index.html` footer.
+- [x] **Legal pages** — Terms, Refund/Cancellation and Privacy created.
+- [ ] **Razorpay keys** — set `RAZORPAY_KEY_ID` / `RAZORPAY_KEY_SECRET` (test keys done; add live keys at launch).
 - [ ] **Domain** — purchase and connect (see above).
-- [ ] Optional: store enrollments / email receipts in `verify-payment.js`.
-- [ ] Add Terms, Refund/Cancellation and Privacy pages (required by Razorpay for activation).
+- [ ] Optional: store enrollments / email receipts in the verify-payment function.
+- [ ] **Razorpay live activation** — submit legal page URLs + KYC, then swap in `rzp_live_...` keys.
